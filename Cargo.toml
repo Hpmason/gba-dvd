@@ -13,11 +13,15 @@ edition = "2018"
 gba = {git = "https://github.com/rust-console/gba", branch = "main"}
 voladdress = "0.4.1"
 
+gba-irq = {git = "https://github.com/Hpmason/gba-irq", rev = "1a33b9a"}
+
 [build-dependencies]
 gba-image-macros = {git = "https://github.com/Hpmason/gba-image-macros"}
 
 [profile.dev]
 panic = "abort"
+# Required to prevent irq stack from overflowing when using gba-irq
+opt-level = 1
 
 [profile.release]
 panic = "abort"
