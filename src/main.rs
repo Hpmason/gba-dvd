@@ -1,9 +1,8 @@
 #![no_std]
 #![no_main]
 
-use gba::{fatal, prelude::*};
-use gba_dvd::prelude::*;
-use gba_irq::prelude::IRQHandler;
+use gba::{fatal, prelude::*, warning};
+use gba_dvd::{irq::vblank_handler_a32, prelude::*};
 
 #[panic_handler]
 #[allow(unused)]
@@ -20,7 +19,7 @@ fn init_reg_values() {
         .with_obj_vram_1d(true);
     DISPCNT.write(SETTING);
     // Set the IRQ handler to use.
-    unsafe { USER_IRQ_HANDLER.write(Some(Handler::irq_handler_a32)) };
+    unsafe { USER_IRQ_HANDLER.write(Some(vblank_handler_a32)) };
     const VBLANK_FLAG: InterruptFlags = InterruptFlags::new().with_vblank(true);
     // Enable all interrupts that are set in the IE register.
     unsafe { IME.write(true) };
@@ -100,6 +99,7 @@ pub fn main() -> ! {
             OBJ_PALETTE.index(1).write(rng.next_color());
             // Corner hit
             if collisions.num_collisions() == 2 {
+                warning!("Corner Hit!");
                 corner_counter = 80;
             }
         }

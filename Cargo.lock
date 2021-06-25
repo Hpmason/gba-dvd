@@ -27,7 +27,6 @@ version = "0.1.0"
 dependencies = [
  "gba",
  "gba-image-macros",
- "gba-irq",
  "voladdress",
 ]
 
@@ -38,14 +37,6 @@ source = "git+https://github.com/Hpmason/gba-image-macros#cae06f3b7e1a15f58da999
 dependencies = [
  "build_const",
  "byteorder",
-]
-
-[[package]]
-name = "gba-irq"
-version = "0.1.0"
-source = "git+https://github.com/Hpmason/gba-irq?rev=1a33b9a#1a33b9a6999d585451cce38a568c5b3b4d413ac4"
-dependencies = [
- "gba",
 ]
 
 [[package]]
