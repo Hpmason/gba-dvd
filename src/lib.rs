@@ -4,12 +4,7 @@
 pub mod prelude {
     pub use crate::assets::*;
 
-    pub use crate::collision::*;
-    pub use crate::sprite::*;
-    pub use crate::address::*;
-    pub use crate::tiles::*;
-    pub use crate::misc::*;
-    pub use crate::irq::*;
+    pub use crate::{address::*, collision::*, irq::*, misc::*, sprite::*, tiles::*};
 }
 
 const GBA_WIDTH: i16 = 240;
@@ -17,11 +12,9 @@ const GBA_HEIGHT: i16 = 160;
 
 mod assets;
 
-mod collision;
-mod sprite;
-mod address;
-mod tiles;
-mod misc;
-mod irq;
-
-
+pub mod address;
+pub mod collision;
+pub mod irq;
+pub mod misc;
+pub mod sprite;
+pub mod tiles;

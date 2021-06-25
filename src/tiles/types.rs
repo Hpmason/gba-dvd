@@ -1,8 +1,5 @@
 use crate::prelude::*;
 
-
-
-
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
 pub struct Tile4bpp([u32; 8]);
 

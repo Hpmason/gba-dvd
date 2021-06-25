@@ -1,6 +1,4 @@
-
-
-use gba::{debug};
+use gba::debug;
 
 use crate::{GBA_HEIGHT, GBA_WIDTH};
 /// 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
@@ -18,36 +16,31 @@ impl CollisionBitField {
     pub fn set_top(&mut self, b: bool) {
         if b {
             self.0 |= 1 << 0;
-        }
-        else {
+        } else {
             self.0 &= !(1 << 0);
         }
     }
     pub fn set_bottom(&mut self, b: bool) {
         if b {
             self.0 |= 1 << 1;
-        }
-        else {
+        } else {
             self.0 &= !(1 << 2);
         }
     }
     pub fn set_left(&mut self, b: bool) {
         if b {
             self.0 |= 1 << 2;
-        }
-        else {
+        } else {
             self.0 &= !(1 << 2);
         }
     }
     pub fn set_right(&mut self, b: bool) {
         if b {
             self.0 |= 1 << 3;
-        }
-        else {
+        } else {
             self.0 &= !(1 << 3);
         }
     }
-
 
     pub fn top(&self) -> bool {
         (self.0 & (1 << 0)) != 0
@@ -63,7 +56,6 @@ impl CollisionBitField {
     }
 }
 
-
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
 pub struct BoundingBox {
     pub x: i16,
@@ -74,9 +66,7 @@ pub struct BoundingBox {
 
 impl BoundingBox {
     pub const fn new() -> Self {
-        BoundingBox {
-            x: 0, y: 0, w: 0, h: 0,
-        }
+        BoundingBox { x: 0, y: 0, w: 0, h: 0 }
     }
     #[inline]
     pub fn left(self) -> i16 {
@@ -95,16 +85,10 @@ impl BoundingBox {
         self.y + self.h
     }
     pub const fn with_size(self, w: i16, h: i16) -> Self {
-        Self {
-            x: self.x, y: self.y,
-            w, h,
-        }
+        Self { x: self.x, y: self.y, w, h }
     }
     pub const fn with_pos(self, x: i16, y: i16) -> Self {
-        Self {
-            x, y,
-            w: self.w, h: self.h,
-        }
+        Self { x, y, w: self.w, h: self.h }
     }
     pub fn is_outside(&mut self, other: BoundingBox) -> CollisionBitField {
         let mut col = CollisionBitField::new();

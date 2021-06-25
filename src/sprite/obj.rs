@@ -1,6 +1,5 @@
 use gba::prelude::*;
 
-
 use crate::collision::BoundingBox;
 
 use super::dimensions::SpriteDimensions;
@@ -11,7 +10,7 @@ pub struct Obj {
     pub attr1: ObjAttr1,
     pub attr2: ObjAttr2,
     /// Bounding box used for collision
-    pub bounding_box: BoundingBox, 
+    pub bounding_box: BoundingBox,
 }
 
 impl Obj {
@@ -39,7 +38,6 @@ impl Obj {
     pub fn set_shape(&mut self, dim: &SpriteDimensions) {
         self.attr0.set_obj_shape(dim.shape());
     }
-    
 
     /// Move relative sprite position
     #[inline]

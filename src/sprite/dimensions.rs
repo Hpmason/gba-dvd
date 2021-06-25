@@ -1,5 +1,5 @@
 /// Valid sizes: 0..=3
-/// Size | 0      | 1           | 2 
+/// Size | 0      | 1           | 2
 /// Size | Square | Horiztontal | Vertical
 /// 0    | 8x8    | 16x8        | 8x16
 /// 1    | 16x16  | 32x8        | 8x32
