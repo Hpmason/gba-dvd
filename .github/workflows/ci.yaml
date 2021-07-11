@@ -96,6 +96,10 @@ jobs:
           profile: minimal
           components: rust-src
           default: true
+      - uses: davidB//rust-cargo-make@v1
+        with:
+          verion: '0.23.0'
+        
       - name: Install gbafix
         run: cargo install gbafix
       
@@ -105,11 +109,13 @@ jobs:
           toolchain: ${{ matrix.rust.toolchain }}
           command: build
           args: --release
-      - name: Pack Rom
-        run: arm-none-eabi-objcopy -O binary ./target/thumbv4t-none-eabi/release/gba-dvd/gba-dvd ./gba-dvd.gba
       
-      - name: Fix roms
-        run: gbafix ./gba-dvd.gba
+      - name: Get cargo-make
+        uses: davidB/rust-cargo-make@v1
+        with:
+          version: '0.23.0'
+      - name: Make ROM
+        run: cargo make justrelease
 
       - name: Publish Release
         uses: softprops/action-gh-release@v1

@@ -21,7 +21,7 @@ dependencies = ["verify-toolchain"]
 command = "cargo"
 args = ["build",  "--release", "--target=thumbv4t-none-eabi", "-Zbuild-std=core"]
 
-[tasks.pack-roms]
+[tasks.pack-rom]
 script_runner = "@duckscript"
 script = [
 '''
@@ -35,19 +35,21 @@ if {path_exists}
     exec arm-none-eabi-objcopy -O binary ${path}/${bin_name} ${path}/${bin_name}.gba
     echo "Fixing headers: ${path}/${bin_name}.gba"
     exec gbafix ${path}/${bin_name}.gba
+    echo "Copying ${path}/${bin_name}.gba to ./${bin_name}.gba"
+    exec cp ${path}/${bin_name}.gba ./${bin_name}.gba
 end
 '''
 ]
 
-[tasks.pack-roms-release]
+[tasks.pack-rom-release]
 dependencies = ["build-rom-release"]
 env = { RELEASE_TARGET = "release" }
-run_task = "pack-roms"
+run_task = "pack-rom"
 
-[tasks.pack-roms-debug]
+[tasks.pack-rom-debug]
 dependencies = ["build-rom-debug"]
 env = { RELEASE_TARGET = "debug" }
-run_task = "pack-roms"
+run_task = "pack-rom"
 
 [tasks.test]
 dependencies = ["verify-toolchain"]
@@ -55,10 +57,10 @@ command = "cargo"
 args = ["test", "--lib"]
 
 [tasks.justrelease]
-dependencies = ["pack-roms-release"]
+dependencies = ["pack-rom-release"]
 
 [tasks.build-all]
-dependencies = ["pack-roms-debug", "pack-roms-release"]
+dependencies = ["pack-rom-debug", "pack-rom-release"]
 
 [tasks.default]
 alias = "build-all"
