@@ -1,8 +1,12 @@
 [package]
 name = "gba-dvd"
+description = "A Gamebody Advance ROM that's just a dvd bounce screen saver"
 version = "0.1.0"
 authors = ["Mason Ginter <mason@dagint.com>"]
+repository = "https://github.com/Hpmason/gba-dvd"
+readme = "README.md"
 edition = "2018"
+license = "Zlib OR Apache-2.0 OR MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -19,8 +23,6 @@ gba-image-macros = {git = "https://github.com/Hpmason/gba-image-macros"}
 
 [profile.dev]
 panic = "abort"
-# Required to prevent irq stack from overflowing when using gba-irq
-opt-level = 1
 
 [profile.release]
 panic = "abort"
