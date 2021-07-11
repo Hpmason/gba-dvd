@@ -6,6 +6,7 @@ script_runner = "@duckscript"
 script = [
 '''
 channel = get_env CARGO_MAKE_RUST_CHANNEL
+echo "Toolchain channel: ${channel}"
 assert_eq ${channel} nightly "Rust toolchain must be set to nightly"
 '''
 ]
