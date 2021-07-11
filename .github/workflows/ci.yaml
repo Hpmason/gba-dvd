@@ -93,22 +93,14 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.rust.toolchain }}
+          override: true
           profile: minimal
           components: rust-src
           default: true
       - uses: davidB//rust-cargo-make@v1
-        with:
-          verion: '0.23.0'
         
       - name: Install gbafix
         run: cargo install gbafix
-      
-      - name: Build Rom
-        uses: actions-rs/cargo@v1
-        with:
-          toolchain: ${{ matrix.rust.toolchain }}
-          command: build
-          args: --release
       
       - name: Get cargo-make
         uses: davidB/rust-cargo-make@v1
