@@ -14,6 +14,7 @@ gba = {git = "https://github.com/rust-console/gba", branch = "main"}
 voladdress = "0.4"
 
 [build-dependencies]
+# Personal crate for converting grit bin files to rust constants
 gba-image-macros = {git = "https://github.com/Hpmason/gba-image-macros"}
 
 [profile.dev]
