@@ -1,5 +1,7 @@
 # gba-dvd
-GBA program that is just the DVD bounce screen saver written in Rust
+GBA program that is just the DVD bounce screen saver written in Rust.
+
+[Check it out](https://hpmason.itch.io/gba-dvd-bounce) at itch.io.
 
 ![DVD bounce](readme-images/animation.gif)
 
