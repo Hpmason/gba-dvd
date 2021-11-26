@@ -11,10 +11,7 @@ license = "Zlib OR Apache-2.0 OR MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-# gba = "0.4"
-# Due to this issue with bitfield ints https://github.com/rust-console/gba/issues/145
-# Waiting until next cargo version release
-gba = {git = "https://github.com/rust-console/gba", branch = "main"}
+gba = "0.5.2"
 voladdress = "0.4"
 
 [build-dependencies]
