@@ -50,7 +50,7 @@ fn copy_tiles() {
     for i in 0..(dvd.len() / 8) {
         tile = Tile4bpp::new_tile();
         for j in 0..8 {
-            tile.write(j, dvd[i * 8 + j])
+            tile.0[j] = dvd[i * 8 + j];
         }
         // first index is used for all sprites
         CHAR_DATA_4.index(i).write(tile);
